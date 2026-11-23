@@ -4,6 +4,8 @@ import ge.tbc.testautomation.exceptionsStringOperationsRegex.LimitException;
 import ge.tbc.testautomation.exceptionsStringOperationsRegex.RadiusException;
 import ge.tbc.testautomation.figures.Circle;
 
+import java.util.Locale;
+
 public class Main {
 
     public static void main(String[] args) {
@@ -20,5 +22,14 @@ public class Main {
         } catch (LimitException exception) {
             System.out.println(exception.getMessage());
         }
+
+        String sentence = "Test Automation Bootcamp 12, 2025";
+        String[] words = sentence.split(" ");
+        System.out.println(words[1].toLowerCase(Locale.ROOT));
+        for (String word : words) {
+            System.out.println(word);
+        }
+        System.out.println(sentence.length());
+        System.out.println(sentence.replace(' ', '-'));
     }
 }
