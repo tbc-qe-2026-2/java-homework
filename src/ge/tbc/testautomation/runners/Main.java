@@ -31,5 +31,17 @@ public class Main {
         }
         System.out.println(sentence.length());
         System.out.println(sentence.replace(' ', '-'));
+
+        String[] phoneNumbers = {
+                "599-14-15-16", "555-12-34-56", "595-00-00-00", "592-98-76-54",
+                "577-14-15-16", "599-14-15-1", "555-12-34-5A"
+        };
+        for (String phoneNumber : phoneNumbers) {
+            System.out.println(phoneNumber + " -> " + phoneNumberValidation(phoneNumber));
+        }
+    }
+
+    private static boolean phoneNumberValidation(String phoneNumber) {
+        return phoneNumber.replace("-", "").matches("(555|595|592|599)[0-9]{6}");
     }
 }
