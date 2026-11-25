@@ -1,4 +1,5 @@
 package ge.tbc.testautomation.abstractClassesInterfaces;
+// Feature: abstract base class for all figures
 
 public abstract class Figure {
 
