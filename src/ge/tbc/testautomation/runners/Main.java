@@ -1,19 +1,47 @@
 package ge.tbc.testautomation.runners;
 
-import ge.tbc.testautomation.figures.Rectangle;
-import ge.tbc.testautomation.figures.Triangle;
-import ge.tbc.testautomation.util.HelperFunctions;
+import ge.tbc.testautomation.exceptionsStringOperationsRegex.LimitException;
+import ge.tbc.testautomation.exceptionsStringOperationsRegex.RadiusException;
+import ge.tbc.testautomation.figures.Circle;
+
+import java.util.Locale;
 
 public class Main {
 
     public static void main(String[] args) {
-        Rectangle rect1 = new Rectangle(4.0, 6.0);
-        Rectangle rect2 = new Rectangle(5.0, 5.0);
-        Triangle triangle = new Triangle(3.0, 4.0, 5.0, 2.5);
+        try {
+            new Circle(-1);
+        } catch (RadiusException exception) {
+            System.out.println(exception.getMessage());
+        }
 
-        System.out.println(rect1 + " -> area: " + rect1.getArea() + ", perimeter: " + rect1.getPerimeter());
-        System.out.println(triangle + " -> area: " + triangle.getArea() + ", perimeter: " + triangle.getPerimeter());
+        try {
+            for (int radius = 1; radius <= 5; radius++) {
+                new Circle(radius);
+            }
+        } catch (LimitException exception) {
+            System.out.println(exception.getMessage());
+        }
 
-        HelperFunctions.compareRectangles(rect1, rect2);
+        String sentence = "Test Automation Bootcamp 12, 2025";
+        String[] words = sentence.split(" ");
+        System.out.println(words[1].toLowerCase(Locale.ROOT));
+        for (String word : words) {
+            System.out.println(word);
+        }
+        System.out.println(sentence.length());
+        System.out.println(sentence.replace(' ', '-'));
+
+        String[] phoneNumbers = {
+                "599-14-15-16", "555-12-34-56", "595-00-00-00", "592-98-76-54",
+                "577-14-15-16", "599-14-15-1", "555-12-34-5A"
+        };
+        for (String phoneNumber : phoneNumbers) {
+            System.out.println(phoneNumber + " -> " + phoneNumberValidation(phoneNumber));
+        }
+    }
+
+    private static boolean phoneNumberValidation(String phoneNumber) {
+        return phoneNumber.replace("-", "").matches("(555|595|592|599)[0-9]{6}");
     }
 }

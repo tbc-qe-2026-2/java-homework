@@ -1,12 +1,10 @@
 package ge.tbc.testautomation.figures;
 
-public sealed class Figure permits Rectangle, Triangle {
+public class Figure {
 
-    public double getArea() {
-        return -1.0;
-    }
+    public static int numberOfInstances;
 
-    public double getPerimeter() {
-        return -1.0;
+    public Figure() {
+        numberOfInstances++;
     }
 }
